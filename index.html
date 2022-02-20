@@ -1,0 +1,38 @@
+<script src="https://unpkg.com/vue@3"></script>
+<script src="./index.js">
+
+<div id="app">
+  <keep-alive>
+     <component :is='currentForm' @setting-form='uodateForm' @update='updateInfo' :form-data='componentForm'></component>
+   </keep-alive>
+ </div> 
+ <script type='text/x-template' id='form1'>
+  <label>姓名</label>
+<input v-model="name"><br>
+  <label>電話</label>
+  <input v-model="phone"><br>
+
+  <input type="button" value='下一步' @click='nextSteps'>
+</script>
+
+<script type='text/x-template' id='form2'>
+  <label>地址</label>
+  <input v-model="address"><br>
+  <input type="button" value='下一步' @click='nextSteps'>
+  <input type="button" value='上一步' @click='preSteps'>
+</script>
+
+<script type='text/x-template' id='form3'>
+  <div>確認資料</div>
+  <div>姓名：{{formData.name}}</div>
+  <!-- 01.預設formDatay作為我們存資料的地方 -->
+  <div>電話：{{formData.phone}}</div>
+  <div>地址：{{formData.address}}</div>
+  
+  <input type="button" value='上一步' @click='preSteps'>
+</script>
+
+<script src='component.js'></script>
+  
+
+  
